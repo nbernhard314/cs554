@@ -12,7 +12,7 @@ const sassFiles = [
 
 const vendorJsFiles = [
     './node_modules/jquery/dist/jquery.js',
-    './node_modules/popper.js/dist/umd/popper.min.js',
+    // './node_modules/popper.js/dist/umd/popper.min.js',
     './node_modules/bootstrap/dist/js/bootstrap.js'
 ];
 
@@ -34,7 +34,8 @@ gulp.task('js:vendor', function (done) {
     done();
 });
 
-gulp.task('build', gulp.parallel(['sass', 'js:vendor']));
+// gulp.task('build', gulp.parallel(['sass', 'js:vendor']));
+gulp.task('build', gulp.series(["sass", "js:vendor"]))
 
 gulp.task('watch', function (done) {
     gulp.watch(sassFiles, gulp.series('sass'));
